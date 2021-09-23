@@ -85,6 +85,10 @@ pub use get_digests::GetDigests;
 pub mod get_cert;
 pub use get_cert::GetCert;
 
+pub mod pfm_region;
+pub mod get_pfm_id;
+pub mod get_pfm_supported_firmware;
+
 pub mod challenge;
 pub use challenge::Challenge;
 
@@ -92,6 +96,7 @@ pub mod reset_counter;
 pub use reset_counter::ResetCounter;
 
 pub mod request_counter;
+
 pub use request_counter::RequestCounter;
 
 /// A Cerberus command.
@@ -185,6 +190,14 @@ wire_enum! {
         ///
         /// See [`RequestCounter`].
         RequestCounter = 0xa1,
+        /// A request for retrieving PFM identifiers
+        ///
+        /// See [`PFMIdentifiers`].
+        PFMIdentifiers = 0x23,
+        /// A request for retrieving PFM supported firmware
+        ///
+        /// See [`PFMSupportedFirmware`].
+        PFMSupportedFirmware = 0x24,
     }
 }
 
@@ -206,6 +219,8 @@ impl From<u8> for CommandType {
             0x87 => CommandType::ResetCounter,
             0xa0 => CommandType::DeviceUptime,
             0xa1 => CommandType::RequestCounter,
+            0x23 => CommandType::PFMIdentifiers,
+            0x24 => CommandType::PFMSupportedFirmware,
             _ => CommandType::Error,
         }
     }

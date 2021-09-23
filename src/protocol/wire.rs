@@ -153,7 +153,7 @@ impl fmt::Display for WireEnumFromStrError {
     }
 }
 
-/// A conveinence macro for generating `WireEnum`-implementing enums.
+/// A convenience macro for generating `WireEnum`-implementing enums.
 ///
 ///
 /// Syntax is as follows:

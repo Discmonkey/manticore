@@ -327,11 +327,11 @@ unsafe impl<'arena> Arena for BumpArena<'arena> {
     }
 
     // NOTE: because this function takes `self` by unique reference, no mutable
-    // slices returned by `alloc()` could have survied, since that would require
+    // slices returned by `alloc()` could have survived, since that would require
     // us to hold a reference to `self`.
     //
     // Thus, followup calls to alloc cannot create aliases, since there are no
-    // outstanding poitners to alias.
+    // outstanding pointers to alias.
     fn reset(&mut self) {
         self.cursor.set(0)
     }
